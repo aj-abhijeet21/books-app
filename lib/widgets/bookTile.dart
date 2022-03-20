@@ -90,6 +90,28 @@ class BookTile extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
+                Row(
+                  children: [
+                    Text(
+                      'Sale: ${book.saleDetail}',
+                      style: const TextStyle(
+                        fontSize: 14,
+                        overflow: TextOverflow.ellipsis,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    if (book.price > 0) const SizedBox(width: 10),
+                    if (book.price > 0)
+                      Text(
+                        'Price: ${book.price}',
+                        style: const TextStyle(
+                          fontSize: 14,
+                          overflow: TextOverflow.ellipsis,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                  ],
+                ),
               ],
             ),
           ),

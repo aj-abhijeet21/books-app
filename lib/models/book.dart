@@ -6,6 +6,8 @@ class Book {
   String description;
   String? averageRating;
   String imageUrl;
+  String saleDetail;
+  double price;
 
   Book({
     required this.averageRating,
@@ -15,6 +17,8 @@ class Book {
     required this.publisher,
     required this.subtitle,
     required this.title,
+    required this.saleDetail,
+    required this.price,
   });
 
   factory Book.fromJson(Map json) {
@@ -29,6 +33,10 @@ class Book {
       publisher: json['volumeInfo']['publisher'] ?? 'not available',
       subtitle: json['volumeInfo']['subtitle'] ?? 'not available',
       title: json['volumeInfo']['title'] ?? 'not available',
+      saleDetail: json['saleInfo']['saleability'] ?? 'not available',
+      price: json['saleInfo']['saleability'] == 'FOR_SALE'
+          ? json['saleInfo']['listPrice']['amount']
+          : 0,
     );
   }
   // volumeInfo

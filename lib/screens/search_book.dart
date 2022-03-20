@@ -48,9 +48,11 @@ class _SearchBookState extends State<SearchBook> {
                     query = searchController.text.trim();
                   });
                   // list = await BookService().searchBook(query);
-
-                  Navigator.pushNamed(context, '/search',
-                      arguments: {'searchQuery': query});
+                  String filter = 'no-filter';
+                  Navigator.pushNamed(context, '/search', arguments: {
+                    'searchQuery': query,
+                    'filter': filter,
+                  });
                 },
                 child: const Icon(
                   Icons.search,

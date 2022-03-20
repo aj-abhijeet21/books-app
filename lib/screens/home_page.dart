@@ -40,9 +40,11 @@ class HomePage extends StatelessWidget {
                 ),
                 onPressed: () async {
                   query = searchController.text.trim();
-
-                  Navigator.pushNamed(context, '/search',
-                      arguments: {'searchQuery': query});
+                  String filter = 'no-filter';
+                  Navigator.pushNamed(context, '/search', arguments: {
+                    'searchQuery': query,
+                    'filter': filter,
+                  });
                 },
                 child: const Icon(
                   Icons.search,
@@ -53,7 +55,7 @@ class HomePage extends StatelessWidget {
             ],
           ),
           FutureBuilder<List<Book>>(
-            future: BookService().searchBook(query),
+            future: BookService().searchBook(query, 'no-filter'),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: CircularProgressIndicator());
